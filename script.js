@@ -1,3 +1,6 @@
+// inspiration for card flip feature:
+// https://dev.to/michael-gokey/flip-for-knowledge-building-a-flashcard-game-with-html-css-javascript-3o9j
+
 const card = document.querySelector(".card");
 const cardFront = document.querySelector(".card-front");
 const cardBack = document.querySelector(".card-back");
