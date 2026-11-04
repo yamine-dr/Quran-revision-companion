@@ -8,17 +8,18 @@
 </head>
 <body>
   <main>
-    <section>
-      <div id="surah-card">
-        <div>
-          Name of the Surah <span id="surah-number"><!-- number injected here --></span>?
-        </div>
-        <div>
-          <form>
-            <input type="text" aria-label="Answer" placeholder="enter surah name">
-            <button type="submit">Submit Answer</button>
-          </form>
-        </div>
+    <section id="surah-number-quiz">
+      <h2>Quiz: Find Surah Number From its Name</h2>
+      
+      <div class="card">
+        <p>
+          Number of the surah <span id="surah-name"><!-- name injected here --></span>?
+        </p>
+        <form id="surah-number-quiz-form" autocomplete="off">
+          <input id="surah-number-quiz-input" type="text" aria-label="Answer" placeholder="enter surah number">
+          <button id="surah-number-quiz-submit">Submit Answer</button>
+        </form>
+        <div id="answer-feedback"></div>
       </div>
     </section>
   </main>
