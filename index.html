@@ -3,23 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quran Quiz</title>
+  <title>Quran Quiz - Find Surah Number</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <main>
-    <section id="surah-number-quiz">
-      <h2>Quiz: Find Surah Number From its Name</h2>
-      
-      <div class="card">
+    <h1>Quiz: Find Surah Number From its Name</h1>
+    <section class="quiz">
+      <div class="quiz-card">
         <p>
-          Number of the surah <span id="surah-name"><!-- name injected here --></span>?
+          Number of the surah <span id="surah-name"><!-- surah name here --></span>?
         </p>
-        <form id="surah-number-quiz-form" autocomplete="off">
-          <input id="surah-number-quiz-input" type="text" aria-label="Answer" placeholder="enter surah number">
-          <button id="surah-number-quiz-submit">Submit Answer</button>
-        </form>
-        <div id="answer-feedback"></div>
+        <input id="answer-input" type="text" aria-label="Answer" placeholder="enter surah number">
+        <button id="submit-btn">Submit Answer</button>
+        <button id="next-btn">Next</button>
       </div>
     </section>
   </main>

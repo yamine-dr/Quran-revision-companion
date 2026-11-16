@@ -1,48 +1,73 @@
+/**
+ * @typedef Surah
+ * @type {object}
+ * @property {string} name the surah name
+ * @property {number} index the surah number in order of the Mushaf (1-114)
+ */
+
 async function fetchAllSurahs() {
   const res = await fetch("https://quranapi.pages.dev/api/surah.json");
   return res.json()
-};
+}
 
 function getRandomSurah(surahsArray) {
-  const randomIndex = Math.floor(Math.random() * surahsArray.length);
+  const randomIndex = Math.floor(Math.random() * 114); // there are 114 surahs
 
   const {
     surahName,
-    surahNameTranslation,
-    surahNameArabic,
-    surahNameArabicLong,
-    ...rest
+    // surahNameTranslation,
+    // surahNameArabic,
+    // surahNameArabicLong,
+    // ...rest
   } = surahsArray[randomIndex];
 
   return {
     index: randomIndex + 1,
     name: surahName,
-    nameTranslation: surahNameTranslation,
-    nameArabic: surahNameArabic,
-    nameArabicLong: surahNameArabicLong,
-    ...rest // revelationPlace, totalAyah
+    // nameTranslation: surahNameTranslation,
+    // nameArabic: surahNameArabic,
+    // nameArabicLong: surahNameArabicLong,
+    // ...rest // revelationPlace, totalAyah
   };
 }
 
 const surahs = await fetchAllSurahs();
-const randomSurah = getRandomSurah(surahs);
-// console.log(`Surah : ${JSON.stringify(randomSurah)}`);
-console.log(`Surah ${randomSurah.index} : ${randomSurah.name}`);
 
-// inject randomSurah name in the HTML page
+// DOM elements
 const surahNameSpan = document.getElementById("surah-name");
-surahNameSpan.textContent = randomSurah.name;
+const answerInput = document.getElementById("answer-input");
+const submitBtn = document.getElementById("submit-btn");
+const nextBtn = document.getElementById("next-btn");
 
-const surahNameQuizSubmitBtn = document.getElementById("surah-number-quiz-submit");
-const surahNameQuizInput = document.getElementById("surah-number-quiz-input");
-const answerFeedbackEl = document.getElementById("answer-feedback");
+function resetState() {
+  nextBtn.style.display = "none";
+  answerInput.style.backgroundColor = "#eee";
+  answerInput.value = "";
+}
 
-// validate user answer
-surahNameQuizSubmitBtn.addEventListener("click", (event) => {
-  const userAnswer = Number(surahNameQuizInput.value);
-  const isRightAnswer = userAnswer === randomSurah.index;
-  answerFeedbackEl.classList.add(isRightAnswer ? "success" : "failed");
-  answerFeedbackEl.textContent = isRightAnswer.toString();
-  console.log(userAnswer);
-  event.preventDefault();
+function handleAnswerSubmit(surahIndex) {
+  const isRightAnswer = Number(answerInput.value) === surahIndex;
+  answerInput.style.backgroundColor = isRightAnswer ? "green" : "red";
+  nextBtn.style.display = "block";
+}
+
+function startQuiz() {
+  resetState();
+
+  /** @type {Surah} */
+  const randomSurah = getRandomSurah(surahs);
+  // console.log(`Surah : ${JSON.stringify(randomSurah)}`);
+  // console.log(`Surah ${randomSurah.index} : ${randomSurah.name}`);
+
+  // inject surah name in the HTML page
+  surahNameSpan.textContent = randomSurah.name;
+
+  // submit-btn event listener get auto-removed after it runs once
+  submitBtn.addEventListener("click", () => handleAnswerSubmit(randomSurah.index), { once: true });
+}
+
+nextBtn.addEventListener("click", () => {
+  startQuiz();
 });
+
+startQuiz();
