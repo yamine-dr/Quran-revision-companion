@@ -40,15 +40,19 @@ const submitBtn = document.getElementById("submit-btn");
 const nextBtn = document.getElementById("next-btn");
 
 function resetState() {
+  submitBtn.style.display = "block";
   nextBtn.style.display = "none";
-  answerInput.style.backgroundColor = "#eee";
+  
   answerInput.value = "";
+  answerInput.style.backgroundColor = "#fff";
 }
 
 function handleAnswerSubmit(surahIndex) {
+  submitBtn.style.display = "none";
+  nextBtn.style.display = "block";
+
   const isRightAnswer = Number(answerInput.value) === surahIndex;
   answerInput.style.backgroundColor = isRightAnswer ? "green" : "red";
-  nextBtn.style.display = "block";
 }
 
 function startQuiz() {

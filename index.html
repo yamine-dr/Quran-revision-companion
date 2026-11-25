@@ -4,23 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quran Quiz - Find Surah Number</title>
+  <!-- STYLING: 1) Tabler Icons CDN, 2) Local Styling -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.53.0/tabler-icons.min.css" integrity="sha512-9kXhCyVau6cVzI3bqTqQpq/Noh9rglow449v4clfwG7su6SlWcQDK6617CC/k9zyvJyHMN1cM4tVHDTdS0LNQw==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main>
-    <h1>Quiz: Find Surah Number From its Name</h1>
-    <section class="quiz">
-      <div class="quiz-card">
+  <div class="app">
+    <h1>Quiz: Find Surah Number</h1>
+    <main class="quiz">
+      <div class="quiz-inner">
         <p>
           Number of the surah <span id="surah-name"><!-- surah name here --></span>?
         </p>
-        <input id="answer-input" type="text" aria-label="Answer" placeholder="enter surah number">
-        <button id="submit-btn">Submit Answer</button>
-        <button id="next-btn">Next</button>
+        <input
+          type="number" min="1" max="114"
+          id="answer-input"
+          class="answer-input"
+          aria-label="Answer"
+          placeholder="enter surah number"
+        >
+        <div class="answer-btns">
+          <button id="submit-btn" class="btn" aria-label="Submit Answer">
+            Submit
+          </button>
+          <button id="next-btn" class="btn">Next Surah</button>
+        </div>
       </div>
-    </section>
-  </main>
+    </main>
+  </div>
 
-  <script type="module" src="script.js"></script>
+  <script src="script.js" type="module"></script>
 </body>
 </html>

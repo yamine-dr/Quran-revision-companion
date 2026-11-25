@@ -1,15 +1,96 @@
+/* VARIABLES */
+
+:root {
+  --c-gold: #FFD60A;
+  --c-dark-yellow: #FFC300;
+  --c-blue: #003566;
+  --c-navy: #001D3D;
+  --c-black: #000814;
+}
+
+/* LAYOUT */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: sans-serif;
+
+html, body {
+  height: 100%;
 }
 
-button {
+body {
+  display: flex;
+  text-align: center;
+  font-family: sans-serif;
+  background-color: var(--c-black);
+}
+
+.app {
+  margin: auto;
+  padding: 1.5rem 1rem;
+  width: 90%;
+  max-width: 400px;
+  color: var(--c-gold);
+  background-color: var(--c-navy);
+  border-radius: 15px;
+}
+
+.quiz-inner {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 80%;
+  font-size: 1.25rem;
+}
+
+.answer-input {
+  padding: 0.3em;
+  text-align: center;
+  color: var(--c-black);
+  border: none;
+  border-radius: 5px;
+}
+.answer-input::placeholder {
+  /* for transparency of answer input placeholder */
+  color: color-mix(in srgb, currentColor 60%, transparent);
+}
+
+.btn {
   display: block;
+  padding: 0.3em;
+  width: 100%;
+  color: var(--c-gold);
+  background-color: var(--c-blue);
+  border: 1px solid var(--c-gold);
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+.btn:hover, .btn:focus {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.btn:active {
+  background-color: var(--c-black);
+}
+
+/* TYPOGRAPHY */
+
+h1 {
+  margin-bottom: 0.5rem;
+}
+
+#surah-name {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.answer-input, .btn {
+  font-size: 1.1rem;
 }
 
 #next-btn {
